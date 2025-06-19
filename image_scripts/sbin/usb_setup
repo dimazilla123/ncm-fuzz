@@ -1,0 +1,18 @@
+#!/bin/sh
+
+INTERFACE=$1
+
+cd /sys/kernel/config/usb_gadget/
+
+mkdir mygadget
+cd mygadget
+
+mkdir -p configs/c.1
+mkdir -p functions/$INTERFACE.0
+
+echo 12:22:33:44:55:66 > functions/$INTERFACE.0/dev_addr
+echo 16:22:33:44:55:66 > functions/$INTERFACE.0/host_addr
+
+ln -s functions/$INTERFACE.0 configs/c.1/
+ls /sys/class/udc/ | head -n1 > UDC
+

@@ -1,0 +1,2 @@
+#!/bin/sh
+for m in libcomposite usb_f_ncm $1; do modprobe $m; done
